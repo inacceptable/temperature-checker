@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	{% load static %} 
+	<title>Weather</title>
+	<link rel='stylesheet' type='text/css' href="{% static 'css/style.css' %}"/>  
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+</head>
+<body>	
+	<div class='weather-container'> 
+		<div class='search'> 
+			<div><input type='text' id='city'  placeholder='city'></div>
+			<div><input type='text' id="postcode" placeholder='postcode'></div>
+			<div><input type='text' id="country" placeholder='country'></div>
+			<div><button id='search-button'>Search</button></div>
+		</div>
+		<div class='display-temperature'>
+			<div class='temperature-details'> 
+				<h1 id='display-name'>{{apidata.name}}</h1>
+				<h2 id='display-current'>Current: {{apidata.main.temp}}</h2>
+				<h2 id='display-min'>Min: {{apidata.main.temp_min}}</h2>
+				<h2 id='display-max'>Max: {{apidata.main.temp_max}}</h2>
+			</div>
+			<div class='temperature-animations'>
+				{% for i in apidata.weather %}
+				<marquee><h3 id='display-description'>Today we have, {{i.description}}</h3>
+				<img id="display-icon" src='http://openweathermap.org/img/wn/{{i.icon}}@4x.png' alt=""/></marquee>
+				{% endfor %}
+			</div>
+			<script type="text/javascript">
+			$("#search-button").click(function() {
+			            var city = $('#city').val();
+			            var postcode = $('#postcode').val();
+			            var country = $('#country').val();
+			            
+			            $.ajax({
+			                type: 'GET',
+			                url: "{% url 'search' %}",
+			                data: {
+			                    'city': city,
+			                    'postcode': postcode,
+			                    'country' : country,
+			                },
+			                success: function(data) {
+			                	var description = data.apidata.weather[0].description; 
+			                	var current_temp = data.apidata.main.temp;
+			                	var temp_min = data.apidata.main.temp_min;
+			                	var temp_max = data.apidata.main.temp_max;
+			                	var icon = data.apidata.weather[0].icon;
+			                	var place = data.apidata.name;
+			                	$('#display-name').text(place);
+			                	$('#display-current').text("Current: " + current_temp);
+			                	$('#display-min').text("Min: " + temp_min);
+			                	$('#display-max').text("Max: " + temp_max);
+			                	$('#display-description').text("Today we have, " + description);
+			                	var new_link = "http://openweathermap.org/img/wn/" + icon + "@4x.png"
+			                	$("#display-icon").attr("src", new_link);
+			                }
+			            });
+			        });
+			</script>
+		</div> 
+		
+	</div>
+
+</body>
+</html>
