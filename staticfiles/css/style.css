@@ -2,15 +2,16 @@
 
 body{
 	font-family: arial;
-	background: linear-gradient(110deg, #7EE8FA 60%, #00BFB3 60%);
+	background: linear-gradient(110deg, #EDF2F4 60%, #EF233C 40%);
 }
 .weather-container
 {
-	background-color: #FFD1BA;
+	background-color: #2B2D42;
 	width: 50%;
 	min-height: 150px;
 	padding: 5%;
 	margin: 0 auto;
+	color: white;
 	margin-top: 5%;
 	padding-top: 4%;
 	padding-bottom: 2%;
@@ -22,9 +23,9 @@ body{
 	text-align: center;
 	width: 90%;
 	padding: 4%;
-	background-color: #92AFD7;
+	background-color: #EDF2F4;
 	display: grid;
-	grid-template-columns: 25% 25% 25% 30%;
+	grid-template-columns: 50% 50%; 
 	margin: 0 auto;
 
 }
@@ -32,20 +33,55 @@ body{
 	text-align: center;
 	padding: 5%;
 	border-radius: 3px;
+	width: 100%;
+	font-size: 1.5em;
 	border: 0px;
 }
 
 .weather-container button
 {
-	padding: 5%;
+	padding: 7%;
 	border-radius: 4px;
 	border:0px;
+	font-size: 1.5em;
 	cursor: pointer;
-	background-color: #AFBBF2;
+	color: white;
+	background-color: #2B2D42;
 	
 }
 .display-temperature
 {
 	display: grid;
 	grid-template-columns: 50% 50%;
+}
+
+.hidden
+{
+	display: none;
+}
+
+@media only screen and (max-width: 900px) {
+	.weather-container
+	{
+		width: 90%;
+	}
+  .search {
+    width: 94%;
+    grid-template-columns: 100%; 
+    grid-gap: 5%;
+  }
+  .weather-container button
+  {	
+  	padding: 3%;
+  	font-size: 1.5em;
+  	width: 98%;
+
+  }
+  .search input{
+  	width: 90%;
+  	padding: 4%;
+  }
+  body{
+	background: linear-gradient(110deg, #EDF2F4 50%, #EF233C 50%);
+}
 }

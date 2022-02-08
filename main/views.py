@@ -13,7 +13,9 @@ def search(request):
 	city = str(request.GET.get('city'))
 	postcode = str(request.GET.get('postcode'))
 	country = str(request.GET.get('country'))
-	apilink = "https://api.openweathermap.org/data/2.5/weather?q="+city+","+postcode+","+country+"&appid=df584a0437488bfbfafc54efe54ddced&units=metric"
+	print (postcode+country)
+	apilink = "https://api.openweathermap.org/data/2.5/weather?lat="+postcode+"&lon="+country+"&appid=df584a0437488bfbfafc54efe54ddced&units=metric"
+	print(apilink)
 	apidata = requests.get(apilink).json()
 	data = {'apidata' : apidata}
 	return JsonResponse(data)
