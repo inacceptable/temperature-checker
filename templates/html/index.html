@@ -43,6 +43,19 @@
         });
     }
     google.maps.event.addDomListener(window, 'load', initialize); 
+    $('.marquee').marquee({
+    //speed in milliseconds of the marquee
+    duration: duration, // for responsive/fluid use
+    //duration: 8000, // for fixed container
+    //gap in pixels between the tickers
+    gap: $('.marquee').width(),
+    //time in milliseconds before the marquee will start animating
+    delayBeforeStart: 0,
+    //'left' or 'right'
+    direction: 'left',
+    //true or false - should the marquee be duplicated to show an effect of continues flow
+    duplicated: true
+});
 </script>
 		<div class='display-temperature'>
 			<div class='temperature-details'> 
@@ -50,6 +63,7 @@
 				<h2 id='display-current'>Current: {{apidata.main.temp}}</h2>
 				<h2 id='display-min'>Min: {{apidata.main.temp_min}}</h2>
 				<h2 id='display-max'>Max: {{apidata.main.temp_max}}</h2>
+
 			</div>
 			<div class='temperature-animations'>
 				{% for i in apidata.weather %}
