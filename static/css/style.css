@@ -189,6 +189,9 @@ justify-content: right;
   	width: 98%;
 
   }
+  .temperature-details{
+  	font-size: 0.7em;
+  }
   .search input{
   	width: 90%;
   	padding: 4%;
