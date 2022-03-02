@@ -101,10 +101,12 @@
 			                	$("#display-icon").attr("src", new_link);
 			                	for (let i = 1; i <= 8; i++) {
 			                		icon = data.api_7day.daily[i-1].weather[0].icon;
-			                	
+			                		var epoch_time = data.api_7day.daily[i-1].dt; 
+			                		var myDate = new Date(epoch_time*1000);
+									$("#day-of-the-week{{forloop.counter}}").text(myDate);
+			                		$("#day-of-the-week"+i).text(myDate);
 			                		description = data.api_7day.daily[i-1].weather[0].description;
 			                		var test_link = "http://openweathermap.org/img/wn/" + icon + "@4x.png";
-
 			                		$("#day-of-the-week-icon"+i).attr('src', test_link);
 			                		$("#day-of-the-week-description"+i).text(description);
 			                		$('#item'+i+1).text(data.api_7day.daily[i-1].temp.min + "°");
@@ -123,8 +125,12 @@
 		<h3 id='button-7day'>7 day forcast<span id='active-toggle' style='float:right;'>+</span></h3>
 		<div id='container-7day' style='display:none; background-color:#F7FFF6; color:black'>
 			{% for i in apidata_7day.daily %}
-			<h1 id='day-of-the-week{{forloop.counter}}' class='day-of-the-week-heading' style='text-align:left'></h1>
+			<h3 id='day-of-the-week{{forloop.counter}}' class='day-of-the-week-heading' style='text-align:left'></h3>
 			<div class='temp-icon-description-container'>
+			<script type="text/javascript">
+				var myDate = new Date({{i.dt}}*1000);
+				$("#day-of-the-week{{forloop.counter}}").text(myDate);
+			</script>
 			<div class='icon-description-container'> 
 				<div class='day-icon-7day'><img id='day-of-the-week-icon{{forloop.counter}}' src="http://openweathermap.org/img/wn/{{i.weather.0.icon}}@4x.png" alt=""/></div> 
 				<div class='day-description-7day'><p id='day-of-the-week-description{{forloop.counter}}'>{{i.weather.0.description}}</p></div>
@@ -138,20 +144,7 @@
 			</div>
 			</div>
 			{% endfor %}
-			<script>
-				var date = new Date();
-				var days = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
-				var day_name = date.getDay()
-				$('#day-of-the-week'+1).text(days[day_name]);
-				for (let i = 2; i <= 8; i++) {
-
-					var date = new Date();
-					date.setDate(date.getDate() + i-1);
-					var day_num = date.getDay()
-
-					$('#day-of-the-week'+i).text(days[day_num]);
-				}
-			</script>
+			
 		</div>
 
 		<script type="text/javascript">
