@@ -66,6 +66,7 @@
 				<h2 id='display-current'>Current: {{apidata.main.temp}}°</h2>
 				<h2 id='display-min'>Min: {{apidata.main.temp_min}}°</h2>
 				<h2 id='display-max'>Max: {{apidata.main.temp_max}}°</h2>
+				<h2 id='display-humidity'>Humidity: {{apidata.main.humidity}}%</h2>
 
 			</div>
 			<div class='temperature-animations'>
@@ -93,12 +94,14 @@
 			                	var current_temp = data.apidata.main.temp;
 			                	var temp_min = data.apidata.main.temp_min;
 			                	var temp_max = data.apidata.main.temp_max;
+			                	var humidity = data.apidata.main.humidity;
 			                	var icon = data.apidata.weather[0].icon;
 			                	var place = data.apidata.name;
 			                	$('#display-name').text(city2);
 			                	$('#display-current').text("Current: " + current_temp + "°");
 			                	$('#display-min').text("Min: " + temp_min + "°");
 			                	$('#display-max').text("Max: " + temp_max + "°");
+			                	$('#display-humidity').text("Humidity: " + humidity + "%");
 			                	$('#display-description').text("Today we have, " + description);
 			                	var new_link = "http://openweathermap.org/img/wn/" + icon + "@4x.png"
 			                	$("#display-icon").attr("src", new_link);
