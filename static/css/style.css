@@ -2,6 +2,10 @@
 {
 	
 }
+.first_page, .second_page
+{
+	user-select: none;
+}
 .banner
 {
 	width: 70%; 
@@ -100,10 +104,11 @@
 	min-height: 150px;
 	margin: 0 auto;
 	color: white;
+	border-radius: 5px;
 	margin-top: 1%;
 	padding-top: 1%;
 	padding-bottom: 2%;
-	box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px, rgb(51, 51, 51) 0px 0px 0px 3px;
+	
 }
 #container-7day
 {
@@ -205,7 +210,7 @@ justify-content: right;
 	border-radius: 4px;
 	grid-template-columns: 48% 48%;
 	grid-gap: 4%;
-
+	border: 0;
 }
 
 .hidden
@@ -218,7 +223,12 @@ justify-content: right;
 		width: 70%;
 	}
 	.search{
-		width: 80%;
+		width: 70%;
+	}
+	#search-button
+	{
+		float: none;
+		width: 90%;
 	}
 	.icon-description-container{
 		border: 0px;
@@ -257,6 +267,15 @@ justify-content: right;
 	}
 }
 @media only screen and (max-width: 900px) {
+	#container-7day
+	{
+		width: 95%;
+	}
+	.second_page hr 
+	{
+		margin-bottom: 3%;
+		user-select: none;
+	}
 	.body{
 		position: relative;
 	}
@@ -270,10 +289,18 @@ justify-content: right;
 	{
 		width: 95%;
 	}
+	.display-temperature
+	{
+		box-shadow: none;
+	}
   .search {
-    width: 80%;
+    width: 95%;
     grid-template-columns: 100%; 
     grid-gap: 5%;
+  }
+  #button-7day
+  {
+  	width: 95%;
   }
   .weather-container button
   {	
