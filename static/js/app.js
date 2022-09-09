@@ -1,7 +1,7 @@
 $('document').ready(function() {
    $('#fullpage').fullpage({
     anchors: ['first_page', 'second_page'],
-            sectionsColor : ['#fbf8f5', '#343a40'],
+            sectionsColor : ['', '#A0E7E5'],
     css3: true,
                 scrollingSpeed: 1000,
                 navigation: true,
@@ -26,6 +26,7 @@ $("#button-7day").click(function() {
                 fullpage_api.moveTo('second_page', 1);
               
               });
+
 function initialize() {
                 var input = document.getElementById('searchTextField');
                 var autocomplete = new google.maps.places.Autocomplete(input);
