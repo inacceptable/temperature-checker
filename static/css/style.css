@@ -345,10 +345,12 @@ justify-content: right;
     width: 95%;
     grid-template-columns: 100%; 
     grid-gap: 5%;
+    margin-bottom: 10%
   }
   #button-7day
   {
   	width: 95%;
+  	margin-top: 5%;
   }
   .weather-container button
   {	
