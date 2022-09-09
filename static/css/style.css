@@ -341,6 +341,14 @@ justify-content: right;
 		box-shadow: none;
 		grid-template-columns: 100%;
 	}
+	.temperature-details
+	{
+		order: 2;
+	}
+	.temperature-animations
+	{
+		order: 1;
+	}
   .search {
     width: 95%;
     grid-template-columns: 100%; 
